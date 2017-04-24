@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+<input type="text" ng-model="name">
+<p>{{ name |uppercase}}</p>
+<p >{{ name |filt}}</p>
+
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope){
+	$scope.name="default text";
+});
+app.filter('filt', function() {
+    return function(x){
+    	var i, txt="";
+    	for(i=0; i<x.length; i++){
+    		c=x[i];
+    		if(i%2)
+    		c=c.toUpperCase();
+    	txt+=c;
+    	}
+    	return txt;
+    };
+});
+</script>
+
+</body>
+</html>
